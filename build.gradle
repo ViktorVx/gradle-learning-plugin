@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+apply plugin: 'maven-publish'
+
+group 'org.pva'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+
+            groupId 'org.pva'
+            artifactId project.name
+            version '1.0-SNAPSHOT'
+
+            from components.java
+        }
+    }
+}
+
+dependencies {
+    compile gradleApi()
+    testCompile group: 'junit', name: 'junit', version: '4.13'
+}
